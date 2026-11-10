@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMART-MATH | Modul Ajar Digital Interaktif</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .tab-active {
+            border-bottom: 2px solid #4f46e5;
+            color: #4f46e5;
+            font-weight: 600;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-slate-800 flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="bg-white p-2 rounded-lg text-indigo-600 font-bold text-xl">SM</div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight">SMART-MATH</h1>
+                    <p class="text-indigo-200 text-xs">Fase E - Pemecahan Masalah Kontekstual</p>
+                </div>
+            </div>
+            <div class="hidden sm:block text-right text-sm">
+                <p class="font-semibold">Lilis Dyah Sawitri, S.Pd</p>
+                <p class="text-indigo-200">SMA Negeri 1 Mantup</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white shadow-sm border-b border-slate-200 sticky top-[72px] z-40">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex space-x-8 overflow-x-auto no-scrollbar">
+                <button onclick="showTab('beranda')" id="tab-beranda" class="whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-sm font-medium text-slate-500 hover:text-slate-700 tab-active">
+                    Beranda
+                </button>
+                <button onclick="showTab('systematic')" id="tab-systematic" class="whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-sm font-medium text-slate-500 hover:text-slate-700">
+                    Sistematis (Polya)
+                </button>
+                <button onclick="showTab('meaningful')" id="tab-meaningful" class="whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-sm font-medium text-slate-500 hover:text-slate-700">
+                    Bermakna & Aktif
+                </button>
+                <button onclick="showTab('reflective')" id="tab-reflective" class="whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-sm font-medium text-slate-500 hover:text-slate-700">
+                    Reflektif
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-5xl mx-auto px-4 py-8 sm:px-6 lg:px-8 w-full">
+        
+        <!-- BERANDA -->
+        <section id="content-beranda" class="fade-in space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4">Selamat Datang di SMART-MATH</h2>
+                <p class="text-slate-600 mb-6 leading-relaxed">
+                    Modul Ajar Digital Interaktif ini dirancang khusus untuk meningkatkan kemampuan pemecahan masalah matematika Anda di Era Digital. Kita akan mengubah paradigma dari sekadar menghafal rumus menjadi <strong>Problem Solver</strong> yang adaptif, tangguh (trengginas), dan kolaboratif.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-100">
+                        <h3 class="font-bold text-indigo-700 mb-2 flex items-center gap-2">
+                            <span>S.M.A.R.T Framework</span>
+                        </h3>
+                        <ul class="space-y-2 text-sm text-indigo-900">
+                            <li><strong>S</strong>ystematic: Alur berpikir terstruktur.</li>
+                            <li><strong>M</strong>eaningful: Terhubung dengan masalah nyata.</li>
+                            <li><strong>A</strong>ctive: Keterlibatan penuh & kolaboratif.</li>
+                            <li><strong>R</strong>eflective: Refleksi mendalam di akhir belajar.</li>
+                            <li><strong>T</strong>echnology-Integrated: Berbasis digital interaktif.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+                        <h3 class="font-bold text-blue-700 mb-2">Tujuan Pembelajaran Fase E</h3>
+                        <p class="text-sm text-blue-900 leading-relaxed">
+                            Peserta didik mampu menerjemahkan masalah nyata ke dalam model matematika dan menyelesaikannya menggunakan penalaran numerasi yang kuat secara mandiri maupun berkelompok.
+                        </p>
+                        <button onclick="showTab('systematic')" class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                            Mulai Belajar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SYSTEMATIC (Sintaks Polya) -->
+        <section id="content-systematic" class="hidden fade-in space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8">
+                <h2 class="text-2xl font-bold text-slate-800 mb-2">Tahap Sistematis</h2>
+                <p class="text-slate-600 mb-6">Penyelesaian masalah matematika dalam SMART-MATH menggunakan 4 langkah Sintaks Polya. Mari kita pelajari konsepnya.</p>
+                
+                <div class="space-y-4">
+                    <!-- Step 1 -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden">
+                        <button class="w-full text-left px-5 py-4 bg-slate-50 hover:bg-slate-100 font-semibold text-slate-700 flex justify-between items-center focus:outline-none" onclick="toggleAccordion('polya-1')">
+                            <span>1. Memahami Masalah (Understand the Problem)</span>
+                            <span id="icon-polya-1">▼</span>
+                        </button>
+                        <div id="polya-1" class="px-5 py-4 text-slate-600 text-sm hidden bg-white">
+                            Identifikasi apa yang diketahui dan apa yang ditanyakan. Apakah informasi yang diberikan cukup? Gambarkan situasinya jika perlu.
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden">
+                        <button class="w-full text-left px-5 py-4 bg-slate-50 hover:bg-slate-100 font-semibold text-slate-700 flex justify-between items-center focus:outline-none" onclick="toggleAccordion('polya-2')">
+                            <span>2. Menyusun Rencana (Devise a Plan)</span>
+                            <span id="icon-polya-2">▼</span>
+                        </button>
+                        <div id="polya-2" class="px-5 py-4 text-slate-600 text-sm hidden bg-white">
+                            Temukan hubungan antara data yang diketahui dan yang tidak diketahui. Rumuskan masalah tersebut ke dalam model matematika (persamaan/pertidaksamaan).
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden">
+                        <button class="w-full text-left px-5 py-4 bg-slate-50 hover:bg-slate-100 font-semibold text-slate-700 flex justify-between items-center focus:outline-none" onclick="toggleAccordion('polya-3')">
+                            <span>3. Melaksanakan Rencana (Carry out the Plan)</span>
+                            <span id="icon-polya-3">▼</span>
+                        </button>
+                        <div id="polya-3" class="px-5 py-4 text-slate-600 text-sm hidden bg-white">
+                            Selesaikan model matematika yang telah dibuat pada langkah sebelumnya dengan teliti. Periksa setiap langkah perhitungan.
+                        </div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden">
+                        <button class="w-full text-left px-5 py-4 bg-slate-50 hover:bg-slate-100 font-semibold text-slate-700 flex justify-between items-center focus:outline-none" onclick="toggleAccordion('polya-4')">
+                            <span>4. Memeriksa Kembali (Look Back)</span>
+                            <span id="icon-polya-4">▼</span>
+                        </button>
+                        <div id="polya-4" class="px-5 py-4 text-slate-600 text-sm hidden bg-white">
+                            Uji solusi yang didapatkan ke dalam konteks masalah semula. Apakah hasilnya masuk akal? Adakah cara lain untuk menyelesaikannya?
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-right">
+                    <button onclick="showTab('meaningful')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-lg transition-colors">
+                        Lanjut ke Simulasi Praktik ➔
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- MEANINGFUL & ACTIVE (Simulasi) -->
+        <section id="content-meaningful" class="hidden fade-in space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-800">Simulasi Kontekstual</h2>
+                        <p class="text-slate-600">Bermakna (Meaningful) & Aktif (Active)</p>
+                    </div>
+                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Materi: SPLDV</span>
+                </div>
+                
+                <!-- Konteks Masalah -->
+                <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                    <h3 class="font-bold text-amber-800 mb-1">Studi Kasus Usaha Kopi Kekinian</h3>
+                    <p class="text-amber-900 text-sm">
+                        Di kantin sekolah, Budi membeli 2 gelas Kopi Susu dan 1 gelas Matcha seharga Rp 35.000. 
+                        Di tempat yang sama, Siti membeli 1 gelas Kopi Susu dan 2 gelas Matcha seharga Rp 40.000. 
+                        Jika Andi ingin membeli 1 gelas Kopi Susu dan 1 gelas Matcha, berapa uang yang harus ia bayarkan?
+                    </p>
+                </div>
+
+                <!-- Interactive Polya Steps -->
+                <div class="space-y-6 relative border-l-2 border-slate-200 ml-3 pl-6">
+                    
+                    <!-- Step 1 -->
+                    <div class="relative">
+                        <div class="absolute -left-[33px] top-0 bg-white border-2 border-indigo-500 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-indigo-500">1</div>
+                        <h4 class="font-semibold text-slate-800 mb-2">Memahami Masalah</h4>
+                        <div class="bg-slate-50 p-4 rounded-lg text-sm text-slate-700">
+                            <p><strong>Diketahui:</strong></p>
+                            <ul class="list-disc ml-5 mb-2">
+                                <li>2 Kopi Susu + 1 Matcha = Rp 35.000</li>
+                                <li>1 Kopi Susu + 2 Matcha = Rp 40.000</li>
+                            </ul>
+                            <p><strong>Ditanya:</strong> Harga 1 Kopi Susu + 1 Matcha?</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative">
+                        <div class="absolute -left-[33px] top-0 bg-white border-2 border-indigo-500 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-indigo-500">2</div>
+                        <h4 class="font-semibold text-slate-800 mb-2">Menyusun Rencana (Model Matematika)</h4>
+                        <div class="bg-slate-50 p-4 rounded-lg text-sm">
+                            <p class="mb-2 text-slate-700">Misalkan: <br> $x$ = Harga 1 gelas Kopi Susu <br> $y$ = Harga 1 gelas Matcha</p>
+                            <div class="flex flex-col gap-2 mt-3">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-24 text-slate-600">Persamaan 1:</span>
+                                    <input type="text" id="eq1" placeholder="Cth: 2x + y = 35000" class="border border-slate-300 rounded px-3 py-1.5 w-full max-w-xs focus:outline-none focus:border-indigo-500">
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="w-24 text-slate-600">Persamaan 2:</span>
+                                    <input type="text" id="eq2" placeholder="Cth: x + 2y = 40000" class="border border-slate-300 rounded px-3 py-1.5 w-full max-w-xs focus:outline-none focus:border-indigo-500">
+                                </div>
+                                <button onclick="checkEquations()" class="mt-2 bg-slate-800 text-white text-xs py-1.5 px-4 rounded w-max hover:bg-slate-700">Cek Model</button>
+                                <p id="eq-feedback" class="text-xs font-medium mt-1"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 & 4 (Hidden initially) -->
+                    <div id="step-3-4" class="hidden relative opacity-50 transition-opacity duration-500">
+                        <div class="absolute -left-[33px] top-0 bg-white border-2 border-indigo-500 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-indigo-500">3</div>
+                        <h4 class="font-semibold text-slate-800 mb-2">Melaksanakan Rencana & Memeriksa</h4>
+                        <div class="bg-slate-50 p-4 rounded-lg text-sm text-slate-700">
+                            <p class="mb-2">Jika Anda menyelesaikan sistem persamaan di atas (misal dengan metode eliminasi/substitusi), Anda akan mendapatkan:</p>
+                            <div class="bg-white border border-slate-200 p-3 rounded text-center font-mono text-base mb-3">
+                                x = 10.000 <br> y = 15.000
+                            </div>
+                            <p class="mb-2">Maka, harga 1 Kopi Susu ($x$) + 1 Matcha ($y$) adalah:</p>
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold">Rp</span>
+                                <input type="number" id="final-answer" placeholder="0" class="border border-slate-300 rounded px-3 py-1.5 w-32 focus:outline-none focus:border-indigo-500">
+                                <button onclick="checkFinalAnswer()" class="bg-green-600 text-white text-xs py-1.5 px-4 rounded hover:bg-green-700">Jawab</button>
+                            </div>
+                            <p id="final-feedback" class="text-xs font-medium mt-2"></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- REFLECTIVE (Refleksi) -->
+        <section id="content-reflective" class="hidden fade-in space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8">
+                <h2 class="text-2xl font-bold text-slate-800 mb-2">Tahap Reflektif</h2>
+                <p class="text-slate-600 mb-6">Langkah krusial untuk memastikan internalisasi konsep. Silakan tuliskan refleksi Anda setelah mempelajari materi pemecahan masalah hari ini.</p>
+                
+                <form id="reflection-form" onsubmit="submitReflection(event)" class="space-y-5">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Apa hal baru yang Anda pahami hari ini?</label>
+                        <textarea required class="w-full border border-slate-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm" rows="3" placeholder="Tuliskan pemahaman Anda..."></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Bagian mana yang masih membingungkan dan perlu perbaikan?</label>
+                        <textarea required class="w-full border border-slate-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm" rows="3" placeholder="Tuliskan kendala Anda..."></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Bagaimana perasaan Anda belajar menggunakan Modul Digital Interaktif ini?</label>
+                        <div class="flex gap-4 mt-2">
+                            <label class="flex flex-col items-center gap-1 cursor-pointer">
+                                <input type="radio" name="feeling" value="senang" class="peer sr-only">
+                                <div class="text-3xl grayscale peer-checked:grayscale-0 transform transition-transform peer-checked:scale-110">🤩</div>
+                                <span class="text-xs text-slate-500">Senang</span>
+                            </label>
+                            <label class="flex flex-col items-center gap-1 cursor-pointer">
+                                <input type="radio" name="feeling" value="biasa" class="peer sr-only">
+                                <div class="text-3xl grayscale peer-checked:grayscale-0 transform transition-transform peer-checked:scale-110">🤔</div>
+                                <span class="text-xs text-slate-500">Biasa Saja</span>
+                            </label>
+                            <label class="flex flex-col items-center gap-1 cursor-pointer">
+                                <input type="radio" name="feeling" value="sulit" class="peer sr-only">
+                                <div class="text-3xl grayscale peer-checked:grayscale-0 transform transition-transform peer-checked:scale-110">😵‍💫</div>
+                                <span class="text-xs text-slate-500">Sulit</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-4 rounded-lg transition-colors mt-4">
+                        Kirim Jurnal Refleksi
+                    </button>
+                </form>
+
+                <!-- Custom Modal/Message Box for Reflection Submission -->
+                <div id="reflection-success" class="hidden mt-4 p-4 bg-green-50 text-green-800 rounded-lg border border-green-200 flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <div>
+                        <h4 class="font-semibold">Refleksi Berhasil Disimpan!</h4>
+                        <p class="text-sm mt-1">Terima kasih telah melakukan refleksi. Guru (Ibu Lilis) akan memberikan umpan balik yang adaptif berdasarkan catatanmu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400 py-6 text-center text-sm mt-auto">
+        <div class="max-w-5xl mx-auto px-4">
+            <p>&copy; 2026 Karya Praktik Baik GEMPITA Awards</p>
+            <p class="mt-1">Inovasi Pembelajaran oleh Lilis Dyah Sawitri, S.Pd - SMA Negeri 1 Mantup</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactivity -->
+    <script>
+        // Tab Navigation
+        function showTab(tabId) {
+            // Hide all contents
+            const contents = ['beranda', 'systematic', 'meaningful', 'reflective'];
+            contents.forEach(id => {
+                document.getElementById('content-' + id).classList.add('hidden');
+                document.getElementById('tab-' + id).classList.remove('tab-active', 'border-indigo-500', 'text-indigo-600');
+                document.getElementById('tab-' + id).classList.add('border-transparent');
+            });
+
+            // Show selected content
+            document.getElementById('content-' + tabId).classList.remove('hidden');
+            
+            // Highlight selected tab
+            const activeTab = document.getElementById('tab-' + tabId);
+            activeTab.classList.remove('border-transparent');
+            activeTab.classList.add('tab-active');
+        }
+
+        // Accordion for Polya Steps
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.textContent = '▲';
+            } else {
+                content.classList.add('hidden');
+                icon.textContent = '▼';
+            }
+        }
+
+        // Simulation Checking Logic (Meaningful/Active)
+        function checkEquations() {
+            const eq1 = document.getElementById('eq1').value.replace(/\s+/g, '').toLowerCase();
+            const eq2 = document.getElementById('eq2').value.replace(/\s+/g, '').toLowerCase();
+            const feedback = document.getElementById('eq-feedback');
+            
+            // Simple validation for prototype purposes
+            const isValidEq1 = eq1.includes('2x+y=35000') || eq1.includes('y+2x=35000');
+            const isValidEq2 = eq2.includes('x+2y=40000') || eq2.includes('2y+x=40000');
+
+            if (isValidEq1 && isValidEq2) {
+                feedback.textContent = "✅ Model Matematika Tepat! Lanjut ke tahap penyelesaian.";
+                feedback.className = "text-xs font-medium mt-1 text-green-600";
+                
+                // Reveal step 3 & 4
+                const step34 = document.getElementById('step-3-4');
+                step34.classList.remove('hidden');
+                setTimeout(() => {
+                    step34.classList.remove('opacity-50');
+                }, 100);
+            } else {
+                feedback.textContent = "❌ Model belum tepat. Periksa kembali koefisien x dan y.";
+                feedback.className = "text-xs font-medium mt-1 text-red-600";
+            }
+        }
+
+        function checkFinalAnswer() {
+            const answer = document.getElementById('final-answer').value;
+            const feedback = document.getElementById('final-feedback');
+            
+            // x = 10000, y = 15000. Total = 25000
+            if (answer == "25000") {
+                feedback.textContent = "🎉 Luar Biasa! Solusi kamu benar. (Tahap Memeriksa Kembali terpenuhi)";
+                feedback.className = "text-xs font-medium mt-2 text-green-600 p-2 bg-green-50 rounded border border-green-200 inline-block";
+            } else {
+                feedback.textContent = "Silakan hitung kembali hasil x + y.";
+                feedback.className = "text-xs font-medium mt-2 text-amber-600";
+            }
+        }
+
+        // Reflection Form Submission
+        function submitReflection(event) {
+            event.preventDefault(); // Prevent page reload
+            
+            // Hide form, show success message
+            document.getElementById('reflection-form').classList.add('hidden');
+            const successMsg = document.getElementById('reflection-success');
+            successMsg.classList.remove('hidden');
+            successMsg.classList.add('fade-in');
+        }
+    </script>
+</body>
+</html>
